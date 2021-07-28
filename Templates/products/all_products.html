@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block style %}
+table, th, td {
+  border: 3px solid black;
+  border-collapse: collapse;
+}
+{% endblock %}
+
+{% block contents %}
+{% for item in prd %}
+  {% if prd %}
+    <center>
+    <table style = "width:90%">
+      <tr>
+        <th>Product Name</th>
+        <td>{{item.name}}</td>
+      </tr>
+      <tr>
+        <th>Product Price</th>
+        <td>{{item.price}}</td>
+      </tr>
+      <tr>
+        <th>Product Description</th>
+        <td>{{item.description}}</td>
+      </tr>
+          </table>
+      <a href = {{item.get_object_url}}>go to object</a>
+          </center>
+          <br><br><br>
+      {% else %}
+      error
+      {% endif%}
+{% endfor %}
+<span>Wanna create a product?
+          <a href = "/create/" >click here</a>
+          </span> <br><br><br>
+{% endblock %}

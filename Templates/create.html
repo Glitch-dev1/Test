@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block style %}
+body {
+  text-align: center;
+  background-color: lightblue;
+}
+{% endblock %}
+
+{% block contents %}
+<br><br><br>
+    <form method = "POST">{% csrf_token %}
+        {{ form.as_p }}
+        <input type = "submit" , value = "Create" >
+    </form>
+    <br><br>
+    <button type = "button">
+    <a href = '/products/'>Go to Products</a>
+    
+{%endblock%}

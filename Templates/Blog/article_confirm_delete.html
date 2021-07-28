@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block style %}
+body {
+text-align: center;
+}
+{%endblock%}
+
+{% block contents %}
+<h1>Delete Article?</h1>
+<h2>{{object.title}}</h2>
+<div>
+<form method = "POST">{% csrf_token %}
+    <input type = 'submit', value = 'yes'></input>
+      <a href = "/blog/">cancel</a>
+</form>
+</div>
+ <br>
+{% endblock %}

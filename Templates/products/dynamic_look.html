@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block style %}
+table, th, td {
+  border: 3px solid black;
+  border-collapse: collapse;
+}
+
+body {
+  text-align: center;
+}
+
+table {
+  border-spacing: 5px;
+}
+{% endblock %}
+
+
+{% block contents %}
+{% if prd %}
+          <table style = "width:90%">
+              <tr>
+                  <th>Product Name</th>
+                  <td>{{prd.name}}
+              </tr>
+              <tr>
+                  <th>Produce Price</th>
+                  <td>{{prd.price}} 
+              </tr>
+              <tr>
+                   <th>Product Description</th>
+                  <td>{{prd.description}}
+              </tr>
+          </table>
+     <a href = /products/ >All Products</a>
+      {% else %}
+      {% endif%}
+{% endblock %}

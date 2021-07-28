@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block style %}
+body {
+text-align : center;
+}
+{%endblock%}
+
+{% block contents %}
+<center><h1>Articles</h1>
+{% for item in object_list %}
+{% if object_list %}
+<br><br><br>
+<h2>{{item.title}}</h2>
+<p>{{item.content}}</p>
+<a href = '{{ item.id }}/update'>update</a><br>
+<a href = '{{ item.id }}/delete'>delete</a>
+</center>
+<br><br>
+{% else %}
+<h1>Error</h1>
+{% endif %}
+{% endfor %}
+wanna create one?<a href = '/blog/create'>Create</a><br><br>
+{% endblock %}
