@@ -13,7 +13,7 @@ def productCreate(request):
     context = {
         "form" : form
     }
-    return render(request, 'create.html', context)
+    return render(request, 'products/create.html', context)
   
 def product_page(request):
     obj = Product.objects.all()
@@ -26,7 +26,7 @@ def product_page(request):
 def dynamic_products(request, p_id):
     obj = Product.objects.get(id=p_id)
     try:
-        obj = Product.objects.get(id=p_id)
+        p_id= Product.objects.get(id=p_id)
     except Product.DoesNotExist:
         raise Http404
         

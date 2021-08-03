@@ -17,14 +17,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from .views import home_page
+from .views import register_request, logout_req, home_page, login_request
 from products.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/', include('Blog.urls')),
+    path('product/', include('products.urls')),
     path('', home_page, name = 'home'),
-    path('products/<p_id>/', dynamic_products, name = 'dynamic_prods'),
-    path('create/', productCreate, name = 'create'),
-    path('products/', product_page, name = 'Products')
+    path('register/', register_request, name= "register"),
+    path('login/', login_request, name= "login"),
+    path('logout/', logout_req, name= "logout"),
 ]

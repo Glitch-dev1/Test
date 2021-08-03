@@ -9,5 +9,6 @@ class Product(models.Model):
         null = True
         )
     description = models.TextField()
+    image = models.ImageField(null=True, blank=True)
     def get_object_url(self):
-        return f"/products{self.id}/"
+        return f"/product/{self.id}/"

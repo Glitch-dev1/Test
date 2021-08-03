@@ -1,31 +1,44 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
+{% block navhead %}
+Products
+{% endblock %}
+
 {% block style %}
-table, th, td {
-  border: 3px solid black;
-  border-collapse: collapse;
-}
+
 {% endblock %}
 
 {% block contents %}
+
+
 {% for item in prd %}
+
   {% if prd %}
-    <center>
-    <table style = "width:90%">
+<br>
+<div class= "container-fluid"> 
+  <center>
+    <img src= "{% static '/images/{{item.image}}' %}" alt="{{ item.image}}">
+    <table class= "table table-bordered table-hovered table-responsive ">
       <tr>
         <th>Product Name</th>
-        <td>{{item.name}}</td>
-      </tr>
-      <tr>
-        <th>Product Price</th>
-        <td>{{item.price}}</td>
-      </tr>
-      <tr>
+        <th>Product Price</th>  
         <th>Product Description</th>
-        <td>{{item.description}}</td>
+        <th>Product Image</th>
       </tr>
-          </table>
-      <a href = {{item.get_object_url}}>go to object</a>
+      <tr>
+        <td>{{item.name}}</td>
+        <td>{{item.price}}</td>
+        <td>{{item.description}}</td> 
+        <td style="width:20px, height:20px"><img src="static/images/{{item.image}}" alt={{item.image}}></td>
+      </tr>
+      <tr>
+        
+
+      </tr>
+    </table>
+      <a href = {{item.get_object_url}}/>go to object</a>
           </center>
           <br><br><br>
       {% else %}
@@ -33,6 +46,7 @@ table, th, td {
       {% endif%}
 {% endfor %}
 <span>Wanna create a product?
-          <a href = "/create/" >click here</a>
+          <a href = "create/" >click here</a>
           </span> <br><br><br>
+</div>
 {% endblock %}

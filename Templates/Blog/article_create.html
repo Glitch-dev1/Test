@@ -1,11 +1,19 @@
 {% extends 'base.html' %}
 
+{% block title %}
+Create Article
+{% endblock %}
+
 {% block style %}
 {%endblock%}
+
+{% block navhead %}
+Create article
+{% endblock %}
 
 {% block contents %}
 <form method = "POST">{% csrf_token %}
 {{form.as_p}}
-    <input type="submit",value = "save">
+    <input type="submit" value = "save">
 </form>
 {% endblock %}

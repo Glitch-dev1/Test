@@ -1,25 +1,57 @@
 {% extends 'base.html' %}
 
+{% block title %}
+Blogs
+{% endblock %}
+
+{% block navhead %}
+Blogs
+{% endblock %}
+
 {% block style %}
 body {
-text-align : center;
+text-align : left;
 }
 {%endblock%}
 
 {% block contents %}
-<center><h1>Articles</h1>
+<div class= "container">
+<center><h1>Articles</h1></center>
 {% for item in object_list %}
 {% if object_list %}
-<br><br><br>
-<h2>{{item.title}}</h2>
-<p>{{item.content}}</p>
-<a href = '{{ item.id }}/update'>update</a><br>
-<a href = '{{ item.id }}/delete'>delete</a>
-</center>
 <br><br>
+<div class="card-group">
+  <div class="card-header">
+      {{item.title}}
+  </div>
+  <div class="card-body">
+      {{item.content}}
+  </div>
+</div>
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Update 
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li>
+      <center>
+          <a class= "btn" href = '{{ item.id }}/update'>edit
+          </a>
+      </center>
+    </li>
+  <li class= "dropdown-divider"></li>
+  <li>
+    <center>
+      <a class= "btn" href = '{{ item.id }}/delete'>delete</a>
+    </center>
+  </li>
+</ul>
+<br>
+
 {% else %}
 <h1>Error</h1>
 {% endif %}
 {% endfor %}
-wanna create one?<a href = '/blog/create'>Create</a><br><br>
+<div >
+wanna create one?<a class= "btn btn-info" href = '/blog/create'>Create</a></div><br><br>
+</div>
 {% endblock %}
