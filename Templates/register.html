@@ -7,17 +7,41 @@ Register
 {% endblock %}
 
 {% block style %}
+#registerform {
+    
+}
 {% endblock %}
 
 {% block contents %}
+
 <div class="container ">
 	<h1>Register</h1>
-	<form method="POST">
+
+	<div id= "registerform" class= "form-group bg-navy">
+	<form class= "form-group form-justified" method="POST">
 		{% csrf_token %}
-       {{ form|crispy }}                   
-		<input class="btn btn-primary" type="submit" value= "Register">
+       {{form.username.label}}:
+       {{form.username}}<br>
+       {{form.email.label}}:
+       {{form.email}}<br>
+       {{form.password1.label}}:
+       {{form.password1}}<br>
+       {{form.password2.label}}:
+       {{form.password2}}<br>
+     
+		<input class="btn btn-primary mt-3" type="submit" value= "Register">
 	</form>
+		{% for error in form.errors %}
+    <div class= "alert alert-danger mt-2 mb-2" role= "alert">{{form.errors}}</div>
+    {% endfor %}
 </div>
-<h3>Already have an account? <a href= "/login/">login</a>
-</h3>
+<h4>Already have an account? <a href= "/login/">login</a>
+</h4>
+
 {% endblock %}
+<script>
+var form_fi = document.querySelector("input")
+for form_f in form_fi(){
+  input[0].placeholder= "username.."
+}
+</script>

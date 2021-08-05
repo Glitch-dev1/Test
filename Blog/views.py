@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import CreateView, DeleteView, DetailView, UpdateView, ListView
 from django.views import View
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 from .models import Article
 from .forms import *
+
 
 class ArticleCreateView(CreateView):
     form_class = ArticleModelForm
@@ -29,7 +31,8 @@ class ArticleListView(View):
         'object_list' : queryset
     }
         return render(request, template_name, context)
-    
+ 
+
 class ArticleDetailView(DetailView):
     
     queryset = Article.objects.all()
