@@ -7,37 +7,43 @@ Register
 {% endblock %}
 
 {% block style %}
-#registerform {
-    
+body {
+    text-align: left;
 }
 {% endblock %}
 
 {% block contents %}
-
-<div class="container ">
+<center>
+<div class="container-fluid ">
 	<h1>Register</h1>
-
-	<div id= "registerform" class= "form-group bg-navy">
-	<form class= "form-group form-justified" method="POST">
+	<form class= "form-group alert alert-primary col-md-5" method="POST">
 		{% csrf_token %}
+		
+		<div class= "form-group">
        {{form.username.label}}:
-       {{form.username}}<br>
+         <input class= "form-control" type= "text" name= "username">
+         <div class="help-block"><small class="text-secondary">{{form.username.errors}}</small></div><br>
        {{form.email.label}}:
-       {{form.email}}<br>
+       <input class= "form-control" type="email" name="email">
+       <div class="help-block"><small>{{form.email.errors}}</small></div><br>
        {{form.password1.label}}:
-       {{form.password1}}<br>
+       <input class= "form-control" type= "password" name= "password1">
+       <div class="help-block"><small>{{form.password1.errors}}</small></div><br>
        {{form.password2.label}}:
-       {{form.password2}}<br>
+       <input class= "form-control" type= "password" name= "password2">
+       
+       <div class="alert-danger">{{form.password2.errors}}</div><br>
      
-		<input class="btn btn-primary mt-3" type="submit" value= "Register">
+		  <input class="btn btn-primary " type="submit" value= "Register">
+	  </div>
 	</form>
-		{% for error in form.errors %}
-    <div class= "alert alert-danger mt-2 mb-2" role= "alert">{{form.errors}}</div>
-    {% endfor %}
-</div>
-<h4>Already have an account? <a href= "/login/">login</a>
-</h4>
+    </div>
 
+    
+<div style= "text-align: center;">
+<h4 class= "alert alert-secondary col-md-12">Already have an account? <a href= "/login/">login</a>
+</h4></div>
+</center>
 {% endblock %}
 <script>
 var form_fi = document.querySelector("input")

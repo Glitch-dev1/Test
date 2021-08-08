@@ -2,9 +2,23 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import CreateView, DeleteView, DetailView, UpdateView, ListView
 from django.views import View
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
+from django.conf import settings
+
 # Create your views here.
 from .models import Article
 from .forms import *
+import images
+
+@login_required
+def sendMail(request):
+  if request.method == 'POST':
+    subject = request.POST['subject']
+    message = request.POST['message']
+    email = request.POST['email']
+    send_mail(subject, message, settings.EMAIL_HOST_USER, [email], fail_silently=False)
+  
+  return render(request, 'sendmail.html')
 
 
 class ArticleCreateView(CreateView):
@@ -28,7 +42,8 @@ class ArticleListView(View):
         template_name = 'Blog/article_list.html'
         queryset = Article.objects.all()
         context = {
-        'object_list' : queryset
+        'object_list' : queryset,
+        'images' : images
     }
         return render(request, template_name, context)
  

@@ -17,16 +17,14 @@ def home_page(request):
 
 @unauth_only
 def register_request(request):
-  form = NewUserForm()
-  if request.method == "POST":
-    form = NewUserForm(request.POST)
-    if form.is_valid():
-      user = form.save()
-      group = Group.objects.get(name= "users")
-      user.groups.add(group)
-      return redirect("/login/")
-      messages.success(request, "Account has been successfully created")
-    
+  form = NewUserForm(request.POST or None)
+  if form.is_valid():
+    user = form.save()
+    group = Group.objects.get(name= "users")
+    user.groups.add(group)
+    return redirect("/login/")
+    messages.success(request, "Account has been successfully created")
+  
     
   context = {"form" : form}
   return render(request, "register.html", context)

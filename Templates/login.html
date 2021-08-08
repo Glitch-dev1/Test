@@ -17,19 +17,21 @@ Login
 </div>
 {% endfor %}
 <form class= "mt-5" method= "POST">{% csrf_token %}
-  <div id= "formid" class= "container">
+  <div id= "formi" class= "container col-md-7 alert alert-primary">
   <div class= "form-group ">
     <label class= "mt-3" for = "username_f">Username:</label>
-    <input id= "username_f" type= "text" placeholder="Username" name= "username" class= "form-control col-md-7">
+    <input id= "username_f" type= "text" placeholder="Username" name= "username" class= "form-control">
   </div>
   <div class= "form-group form-group-primary">
     <label for= "password_f">Password:</label>
     
-    <input id= "password_f" type= "password" placeholder="Password" name= "password" class= "form-control col-md-7">
+    <input id= "password_f" type= "password" placeholder="Password" name= "password" class= "form-control">
   </div>
     <input class= "btn btn-primary mb-4" type= "submit" value= "Login">
   </div>
 </form>
-<h4>don't have an Account? <a href= "/register/">Register here</a>
-</h4>
+<br><br>
+<center>
+<div class= "alert alert-dark col-md-12"><h4 class= "mt-1">don't have an Account? <a href= "/register/">Register here</a>
+</h4></div></center>
 {% endblock %}
